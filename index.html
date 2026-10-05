@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>يوم المعلم العالمي | شهادة وشكر لمعلمي</title>
+
+  <!-- Google Fonts: Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: rgba(212, 175, 55, 0.35);
+      --gold-primary: #b8860b;
+      --gold-light: #7a5800;
+      --gold-dark: #8b6508;
+      --text-light: #1e293b;
+      --text-muted: #64748b;
+      --red-accent: #e53e3e;
+      --blue-accent: #3182ce;
+      --green-accent: #38a169;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Tajawal', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* أزرار دخول المسئول في أعلى أعلى الصفحة يميناً */
+    .top-right-admin-btn {
+      position: fixed;
+      top: 50px;
+      right: 15px;
+      z-index: 999;
+      background: #ffffff;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .top-right-admin-btn:hover {
+      background: var(--gold-primary);
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    .top-right-admin-btn.logged-in {
+      background: #e53e3e;
+      color: #ffffff;
+      border-color: #c53030;
+      width: auto;
+      border-radius: 20px;
+      padding: 0 14px;
+      height: 36px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      gap: 6px;
+    }
+
+    /* 1. الشريط المتحرك العلوي Ticker Bar */
+    .ticker-wrap {
+      width: 100%;
+      background: linear-gradient(90deg, #d4af37, #f3e5ab, #d4af37);
+      color: #3d2b00;
+      overflow: hidden;
+      height: 44px;
+      line-height: 44px;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+      position: relative;
+      z-index: 100;
+    }
+
+    .ticker {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: ticker-scroll 35s linear infinite;
+    }
+
+    .ticker__item {
+      display: inline-block;
+      padding: 0 30px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .ticker__item i {
+      margin-left: 8px;
+    }
+
+    @keyframes ticker-scroll {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+
+    .ticker-wrap:hover .ticker {
+      animation-play-state: paused;
+    }
+
+    /* Container العام */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    /* 2. قسم الهيرو الرئيسي Hero Section */
+    .hero {
+      text-align: center;
+      padding: 70px 20px 50px;
+      position: relative;
+    }
+
+    .badge-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff8e7;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 10px rgba(184, 134, 11, 0.1);
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #1e293b 0%, #b8860b 60%, #8b6508 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .btn-celebrate {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #ffffff;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(184, 134, 11, 0.25);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-celebrate:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(184, 134, 11, 0.4);
+    }
+
+    /* عناوين الأقسام */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: var(--gold-primary);
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+      margin: 8px auto 0;
+    }
+
+    .wishes-section {
+      padding: 20px 0 80px;
+    }
+
+    .wish-form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    /* تنبيه نجاح الإرسال والمراجعة */
+    .alert-success-review {
+      background: #fffdf0;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-dark);
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--gold-dark);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background: #f8fafc;
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      border-radius: 10px;
+      color: #1e293b;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--gold-primary);
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(184, 134, 11, 0.2);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+    }
+
+    .btn-submit:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(184, 134, 11, 0.3);
+    }
+
+    .pending-section {
+      background: #fffefb;
+      border: 1px dashed var(--gold-primary);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 40px;
+      display: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    }
+
+    .pending-section.active {
+      display: block;
+    }
+
+    .pending-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pending-title {
+      color: var(--gold-primary);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-change-pass {
+      background: #fff8e7;
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      color: var(--gold-dark);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-change-pass:hover {
+      background: var(--gold-primary);
+      color: #ffffff;
+    }
+
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* بطاقات التهنئة التفاعلية */
+    .wish-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      position: relative;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    }
+
+    .wish-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold-primary);
+      box-shadow: 0 12px 25px rgba(184, 134, 11, 0.15);
+    }
+
+    .wish-card.pending-card {
+      border-style: dashed;
+      border-color: #e53e3e;
+      background: #fffafae8;
+    }
+
+    .wish-header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .wish-badge {
+      font-size: 0.75rem;
+      background: #fff8e7;
+      color: var(--gold-primary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(184, 134, 11, 0.2);
+    }
+
+    .wish-badge.badge-pending {
+      background: #fff5f5;
+      color: #c53030;
+      border-color: rgba(229, 62, 62, 0.3);
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .action-btn {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.85rem;
+    }
+
+    .action-btn.approve-btn:hover {
+      background: #f0fff4;
+      color: #276749;
+      border-color: #38a169;
+    }
+
+    .action-btn.edit-btn:hover {
+      background: #ebf8ff;
+      color: #2b6cb0;
+      border-color: #3182ce;
+    }
+
+    .action-btn.delete-btn:hover {
+      background: #fff5f5;
+      color: #c53030;
+      border-color: #e53e3e;
+    }
+
+    .wish-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 15px;
+      word-break: break-word;
+    }
+
+    .wish-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+      font-size: 0.88rem;
+    }
+
+    .wish-author {
+      font-weight: 700;
+      color: var(--gold-primary);
+    }
+
+    .wish-like {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .wish-like:hover, .wish-like.liked {
+      color: #e53e3e;
+    }
+
+    /* Modal windows */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border: 1px solid var(--gold-primary);
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      max-width: 550px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 12px;
+    }
+
+    .modal-title {
+      color: var(--gold-primary);
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: #1e293b;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-modal-cancel {
+      flex: 1;
+      background: #f1f5f9;
+      color: #475569;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-modal-save {
+      flex: 1;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background: #ffffff;
+      border-top: 1px solid rgba(184, 134, 11, 0.2);
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: auto;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.02);
+    }
+
+    footer p {
+      color: var(--gold-primary);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.2rem; }
+      .wish-form-card { padding: 20px; }
+      .top-right-admin-btn { top: 50px; right: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- أيقونة دخول المسئول الصغيرة في الجانب الأيمن العلوي -->
+  <button class="top-right-admin-btn" id="adminBtn" onclick="toggleAdminPanel()" title="لوحة المسئول">
+    <i class="fa-solid fa-lock" id="adminBtnIcon"></i>
+    <span id="adminBtnText" style="display:none;">خروج</span>
+  </button>
+
+  <!-- 1. الشريط المتحرك العلوي -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <div class="ticker__item"><i class="fa-solid fa-star"></i> شكراً لمن أضاء بفكره طريقنا</div>
+      <div class="ticker__item"><i class="fa-solid fa-heart"></i> شكراً لصناع المجد وبناة المستقبل</div>
+      <div class="ticker__item"><i class="fa-solid fa-award"></i> تحية تقدير وإجلال لكل معلم ومعلمة</div>
+      <div class="ticker__item"><i class="fa-solid fa-book-open"></i> بالعلم نرتقي وبجميل أثركم نهتدي</div>
+      <div class="ticker__item"><i class="fa-solid fa-crown"></i> يوم المعلم العالمي - عطاءٌ لا ينضب</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- 2. قسم الهيرو -->
+    <section class="hero">
+      <div class="badge-gold">
+        <i class="fa-solid fa-calendar-day"></i> 5 أكتوبر - اليوم العالمي للمعلم
+      </div>
+      <h1 class="hero-title">شكراً لصنّاع الأثر والأمل</h1>
+      <div>
+        <button class="btn-celebrate" onclick="triggerConfetti()">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> احتفل معنا الآن!
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. جدار الشكر والتقدير لمعلمي -->
+    <section class="wishes-section">
+      <div class="section-header">
+        <h2><i class="fa-solid fa-award"></i> جدار الشكر والتقدير لمعلمي</h2>
+        <p style="color: var(--text-muted); margin-top: 5px;">شاركونا كلمات الشكر والتقدير العطرة لمعلمينا الأفاضل</p>
+      </div>
+
+      <!-- نموذج إضافة رسالة جديدة -->
+      <div class="wish-form-card">
+        <!-- تنبيه نجاح الإرسال والمراجعة -->
+        <div class="alert-success-review" id="reviewAlert">
+          <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
+          <span>تم إرسال مشاركتك بنجاح! وهي الآن <strong>تحت المراجعة</strong> وسوف تظهر على الجدار بعد موافقة المسئول عليها.</span>
+        </div>
+
+        <form id="wishForm">
+          <div class="form-group">
+            <label for="authorName"><i class="fa-solid fa-user"></i> اسمك الكريم:</label>
+            <input type="text" id="authorName" class="form-control" placeholder="أدخل اسمك هنا..." required>
+          </div>
+          <div class="form-group">
+            <label for="wishMessage"><i class="fa-solid fa-pen-nib"></i> رسالة الشكر والتقدير:</label>
+            <textarea id="wishMessage" class="form-control" placeholder="اكتب رسالة الشكر للمعلم هنا..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <i class="fa-solid fa-paper-plane"></i> إرسال الكلمة للعرض على الجدار
+          </button>
+        </form>
+      </div>
+
+      <!-- قسم الرسائل بانتظار المراجعة (خاص بالمسئول) -->
+      <div class="pending-section" id="pendingSection">
+        <div class="pending-header-bar">
+          <h3 class="pending-title">
+            <i class="fa-solid fa-hourglass-half"></i> الرسائل المعلقة (تحت المراجعة)
+          </h3>
+          <button class="btn-change-pass" onclick="openChangePassModal()">
+            <i class="fa-solid fa-key"></i> تغيير الرقم السري
+          </button>
+        </div>
+        <div class="wishes-grid" id="pendingWishesContainer">
+          <!-- تظهر هنا المشاركات بانتظار الاعتماد -->
+        </div>
+      </div>
+
+      <!-- شبكة عرض رسائل الشكر المعتمدة -->
+      <div class="wishes-grid" id="wishesContainer">
+        <!-- يتم إدراج الرسائل المقبولة ديناميكياً بواسطة JavaScript -->
+      </div>
+    </section>
+  </div>
+
+  <!-- نافذة تسجيل دخول المسئول (Password Modal) -->
+  <div class="modal-overlay" id="adminAuthModal">
+    <div class="modal-card" style="max-width: 400px;">
+      <div class="modal-header">
+        <span class="modal-title"><i class="fa-solid fa-user-shield"></i> دخول المسئول</span>
+        <button class="modal-close" onclick="closeAdminAuthModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="adminAuthForm">
+        <div class="form-group">
+          <label for="adminPassInput"><i class="fa-solid fa-key"></i> أدخل الرقم السري:</label>
+          <input type="password" id="adminPassInput" class="form-control" placeholder="الرقم السري الافتراضي 1234" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-modal-cancel" onclick="closeAdminAuthModal()">إلغاء</button>
+          <button type="submit" class="btn-modal-save"><i class="fa-solid fa-right-to-bracket"></i> دخول</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة تغيير الرقم السري (Change Password Modal) -->
+  <div class="modal-overlay" id="changePassModal">
+    <div class="modal-card" style="max-width: 420px;">
+      <div class="modal-header">
+        <span class="modal-title"><i class="fa-solid fa-key"></i> تغيير الرقم السري للمسئول</span>
+        <button class="modal-close" onclick="closeChangePassModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="changePassForm">
+        <div class="form-group">
+          <label for="currentPassInput"><i class="fa-solid fa-lock"></i> الرقم السري الحالي:</label>
+          <input type="password" id="currentPassInput" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="newPassInput"><i class="fa-solid fa-key"></i> الرقم السري الجديد:</label>
+          <input type="password" id="newPassInput" class="form-control" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-modal-cancel" onclick="closeChangePassModal()">إلغاء</button>
+          <button type="submit" class="btn-modal-save"><i class="fa-solid fa-check"></i> حفظ الجديد</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة تعديل الرسالة (Modal) -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title"><i class="fa-solid fa-pen-to-square"></i> تعديل المشاركة</span>
+        <button class="modal-close" onclick="closeEditModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="editForm">
+        <input type="hidden" id="editWishId">
+        <div class="form-group">
+          <label for="editAuthorName"><i class="fa-solid fa-user"></i> اسمك الكريم:</label>
+          <input type="text" id="editAuthorName" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="editWishMessage"><i class="fa-solid fa-pen-nib"></i> نص الرسالة:</label>
+          <textarea id="editWishMessage" class="form-control" required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-modal-cancel" onclick="closeEditModal()">إلغاء</button>
+          <button type="submit" class="btn-modal-save"><i class="fa-solid fa-check"></i> حفظ التعديل</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. تذييل الصفحة Footer -->
+  <footer>
+    <p>تصميم أ.صلاح الرحيمان</p>
+  </footer>
+
+  <script>
+    // 1. رابط Google Apps Script الخاص بك (المرتبط بشيت: لوح الشكر والتقدير)
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3GhyCKyjCLclD_pohoWXPfCm5Xnz_3pBixXhfP0_tJCXlr7ZPAGaeKnWpn6Mfembb/exec";
+    const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1QfK2JvhBZiyidRYys6-yQmzbDf2piwdnFHNBI1VoCKE/edit?usp=sharing";
+
+    // تفعيل الاحتفال بالألعاب النارية والقصاصات
+    function triggerConfetti() {
+      const count = 200;
+      const defaults = { origin: { y: 0.7 } };
+
+      function fire(particleRatio, opts) {
+        confetti(Object.assign({}, defaults, opts, {
+          particleCount: Math.floor(count * particleRatio)
+        }));
+      }
+
+      fire(0.25, { spread: 26, startVelocity: 55, colors: ['#b8860b', '#d4af37'] });
+      fire(0.2, { spread: 60, colors: ['#b8860b', '#aa7c11'] });
+      fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+      fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, colors: ['#ffffff', '#f3e5ab'] });
+      fire(0.1, { spread: 120, startVelocity: 45 });
+    }
+
+    const wishForm = document.getElementById('wishForm');
+    const wishesContainer = document.getElementById('wishesContainer');
+    const pendingWishesContainer = document.getElementById('pendingWishesContainer');
+    const pendingSection = document.getElementById('pendingSection');
+    const reviewAlert = document.getElementById('reviewAlert');
+    const editModal = document.getElementById('editModal');
+    const editForm = document.getElementById('editForm');
+    const adminAuthModal = document.getElementById('adminAuthModal');
+    const adminAuthForm = document.getElementById('adminAuthForm');
+    const changePassModal = document.getElementById('changePassModal');
+    const changePassForm = document.getElementById('changePassForm');
+    const adminBtn = document.getElementById('adminBtn');
+    const adminBtnIcon = document.getElementById('adminBtnIcon');
+    const adminBtnText = document.getElementById('adminBtnText');
+
+    let isAdminLoggedIn = false;
+    let localWishesCache = [];
+    const DEFAULT_PASS = "1234";
+
+    function getAdminPassword() {
+      return localStorage.getItem('teachers_day_admin_pass') || DEFAULT_PASS;
+    }
+
+    function setAdminPassword(newPass) {
+      localStorage.setItem('teachers_day_admin_pass', newPass);
+    }
+
+    // جلب البيانات من Google Sheets عبر Apps Script
+    async function fetchWishes() {
+      try {
+        const response = await fetch(SCRIPT_URL);
+        const data = await response.json();
+        localWishesCache = data;
+        renderWishes();
+      } catch (error) {
+        console.error("خطأ في جلب البيانات من شيت جوجل:", error);
+      }
+    }
+
+    function renderWishes() {
+      wishesContainer.innerHTML = '';
+      pendingWishesContainer.innerHTML = '';
+
+      // تصفية المشاركات: المعتمدة تُعرض في الجدار العام للجميع
+      const approvedWishes = localWishesCache.filter(w => w.approved === true || w.approved === 'true' || w.approved === 1);
+      const pendingWishes = localWishesCache.filter(w => !(w.approved === true || w.approved === 'true' || w.approved === 1));
+
+      // عرض الرسائل المعتمدة للعموم
+      if (approvedWishes.length === 0) {
+        wishesContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 0.95rem; text-align: center; grid-column: 1/-1;">لا توجد رسائل معتمدة حالياً.</p>';
+      } else {
+        approvedWishes.forEach(wish => {
+          const card = document.createElement('div');
+          card.className = 'wish-card';
+
+          // أزرار التحكم (تظهر فقط عند تسجيل دخول المسئول)
+          const adminActionsHTML = isAdminLoggedIn ? `
+            <div class="action-btns">
+              <button class="action-btn edit-btn" title="تعديل المشاركة" onclick="openEditModal(${wish.id})">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button class="action-btn delete-btn" title="حذف المشاركة" onclick="deleteWish(${wish.id})">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          ` : '';
+
+          card.innerHTML = `
+            <div>
+              <div class="wish-header-actions">
+                <span class="wish-badge"><i class="fa-solid fa-heart text-xs"></i> رسالة تقدير</span>
+                ${adminActionsHTML}
+              </div>
+              <div class="wish-text">"${escapeHtml(wish.text)}"</div>
+            </div>
+            <div class="wish-footer">
+              <span class="wish-author"><i class="fa-solid fa-user-tag"></i> ${escapeHtml(wish.name)}</span>
+              <button class="wish-like" onclick="toggleLike(${wish.id})">
+                <i class="fa-regular fa-heart"></i>
+                <span>${wish.likes || 0}</span>
+              </button>
+            </div>
+          `;
+          wishesContainer.appendChild(card);
+        });
+      }
+
+      // عرض الرسائل المعلقة فقط في لوحة المسئول
+      if (pendingWishes.length === 0) {
+        pendingWishesContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">لا توجد رسائل معلقة حالياً.</p>';
+      } else {
+        pendingWishes.forEach(wish => {
+          const card = document.createElement('div');
+          card.className = 'wish-card pending-card';
+          card.innerHTML = `
+            <div>
+              <div class="wish-header-actions">
+                <span class="wish-badge badge-pending"><i class="fa-solid fa-clock"></i> تحت المراجعة</span>
+                <div class="action-btns">
+                  <button class="action-btn approve-btn" title="موافقة ونشر" onclick="approveWish(${wish.id})">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="action-btn edit-btn" title="تعديل" onclick="openEditModal(${wish.id})">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button class="action-btn delete-btn" title="رفض/حذف" onclick="deleteWish(${wish.id})">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="wish-text">"${escapeHtml(wish.text)}"</div>
+            </div>
+            <div class="wish-footer">
+              <span class="wish-author"><i class="fa-solid fa-user-tag"></i> ${escapeHtml(wish.name)}</span>
+            </div>
+          `;
+          pendingWishesContainer.appendChild(card);
+        });
+      }
+    }
+
+    // إرسال مشاركة جديدة إلى Google Sheets
+    wishForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('authorName');
+      const msgInput = document.getElementById('wishMessage');
+
+      const payload = {
+        action: "create",
+        name: nameInput.value.trim(),
+        text: msgInput.value.trim()
+      };
+
+      reviewAlert.style.display = 'flex';
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        nameInput.value = '';
+        msgInput.value = '';
+
+        setTimeout(() => {
+          reviewAlert.style.display = 'none';
+          fetchWishes();
+        }, 2000);
+      } catch (error) {
+        console.error("خطأ في إرسال المشاركة:", error);
+      }
+    });
+
+    // موافقة المسئول على الرسالة
+    async function approveWish(id) {
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: "approve", id: id })
+        });
+
+        const item = localWishesCache.find(w => w.id == id);
+        if (item) item.approved = true;
+        renderWishes();
+
+        confetti({ particleCount: 50, spread: 60, origin: { y: 0.8 } });
+        setTimeout(fetchWishes, 1500);
+      } catch (error) {
+        console.error("خطأ في الموافقة على الرسالة:", error);
+      }
+    }
+
+    // حذف مشاركة (خاص بالمسئول)
+    async function deleteWish(id) {
+      if (!isAdminLoggedIn) {
+        alert('عذراً، تقتصر صلاحية الحذف على المسئول فقط.');
+        return;
+      }
+      if (confirm('هل أنت تأكد من رغبتك في حذف هذه المشاركة؟')) {
+        try {
+          await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: "delete", id: id })
+          });
+          localWishesCache = localWishesCache.filter(w => w.id != id);
+          renderWishes();
+          setTimeout(fetchWishes, 1500);
+        } catch (error) {
+          console.error("خطأ في حذف المشاركة:", error);
+        }
+      }
+    }
+
+    // فتح نافذة التعديل
+    function openEditModal(id) {
+      if (!isAdminLoggedIn) {
+        alert('عذراً، تقتصر صلاحية التعديل على المسئول فقط.');
+        return;
+      }
+      const wish = localWishesCache.find(w => w.id == id);
+      if (wish) {
+        document.getElementById('editWishId').value = wish.id;
+        document.getElementById('editAuthorName').value = wish.name;
+        document.getElementById('editWishMessage').value = wish.text;
+        editModal.classList.add('active');
+      }
+    }
+
+    function closeEditModal() {
+      editModal.classList.remove('active');
+    }
+
+    // حفظ تعديل المشاركة وإرساله للشيت
+    editForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('editWishId').value;
+      const updatedName = document.getElementById('editAuthorName').value.trim();
+      const updatedText = document.getElementById('editWishMessage').value.trim();
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: "edit", id: id, name: updatedName, text: updatedText })
+        });
+        closeEditModal();
+        
+        const wish = localWishesCache.find(w => w.id == id);
+        if (wish) {
+          wish.name = updatedName;
+          wish.text = updatedText;
+        }
+        renderWishes();
+        setTimeout(fetchWishes, 1500);
+      } catch (error) {
+        console.error("خطأ في حفظ التعديلات:", error);
+      }
+    });
+
+    // تسجيل إعجاب بمشاركة
+    async function toggleLike(id) {
+      try {
+        const wish = localWishesCache.find(w => w.id == id);
+        if (wish) {
+          wish.likes = (parseInt(wish.likes) || 0) + 1;
+          renderWishes();
+        }
+
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: "like", id: id })
+        });
+        setTimeout(fetchWishes, 1500);
+      } catch (error) {
+        console.error("خطأ في تسجيل الإعجاب:", error);
+      }
+    }
+
+    // فتح / إغلاق لوحة المسئول
+    function toggleAdminPanel() {
+      if (!isAdminLoggedIn) {
+        document.getElementById('adminPassInput').value = '';
+        adminAuthModal.classList.add('active');
+      } else {
+        isAdminLoggedIn = false;
+        pendingSection.classList.remove('active');
+        adminBtn.classList.remove('logged-in');
+        adminBtnIcon.className = "fa-solid fa-lock";
+        adminBtnText.style.display = "none";
+        renderWishes();
+      }
+    }
+
+    function closeAdminAuthModal() {
+      adminAuthModal.classList.remove('active');
+    }
+
+    adminAuthForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const enteredPass = document.getElementById('adminPassInput').value;
+      if (enteredPass === getAdminPassword()) {
+        isAdminLoggedIn = true;
+        closeAdminAuthModal();
+        pendingSection.classList.add('active');
+        
+        adminBtn.classList.add('logged-in');
+        adminBtnIcon.className = "fa-solid fa-right-from-bracket";
+        adminBtnText.style.display = "inline";
+        
+        fetchWishes();
+      } else {
+        alert('الرقم السري غير صحيح!');
+      }
+    });
+
+    function openChangePassModal() {
+      document.getElementById('currentPassInput').value = '';
+      document.getElementById('newPassInput').value = '';
+      changePassModal.classList.add('active');
+    }
+
+    function closeChangePassModal() {
+      changePassModal.classList.remove('active');
+    }
+
+    changePassForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const currentPassInput = document.getElementById('currentPassInput').value;
+      const newPassInput = document.getElementById('newPassInput').value;
+
+      if (currentPassInput !== getAdminPassword()) {
+        alert('الرقم السري الحالي غير صحيح!');
+        return;
+      }
+
+      if (newPassInput.trim().length < 3) {
+        alert('يرجى إدخال رقم سري لا يقل عن 3 خانات.');
+        return;
+      }
+
+      setAdminPassword(newPassInput.trim());
+      alert('تم تغيير الرقم السري بنجاح!');
+      closeChangePassModal();
+    });
+
+    function escapeHtml(string) {
+      const div = document.createElement('div');
+      div.innerText = string;
+      return div.innerHTML;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchWishes();
+    });
+  </script>
+</body>
+</html>
