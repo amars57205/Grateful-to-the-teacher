@@ -826,9 +826,19 @@
       wishesContainer.innerHTML = '';
       pendingWishesContainer.innerHTML = '';
 
-      // تصفية المشاركات: المعتمدة تُعرض في الجدار العام للجميع
-      const approvedWishes = localWishesCache.filter(w => w.approved === true || w.approved === 'true' || w.approved === 1);
-      const pendingWishes = localWishesCache.filter(w => !(w.approved === true || w.approved === 'true' || w.approved === 1));
+      // دالة مرنة لمعرفة حالة الاعتماد (التحقق من القيم البولينية والنصية والعددية)
+      const isApproved = (w) => {
+        if (w.approved === true || w.approved === 1) return true;
+        if (typeof w.approved === 'string') {
+          const val = w.approved.trim().toLowerCase();
+          return val === 'true' || val === '1' || val === 'approved' || val === 'نعم';
+        }
+        return false;
+      };
+
+      // تصفية المشاركات
+      const approvedWishes = localWishesCache.filter(w => isApproved(w));
+      const pendingWishes = localWishesCache.filter(w => !isApproved(w));
 
       // عرض الرسائل المعتمدة للعموم
       if (approvedWishes.length === 0) {
@@ -856,10 +866,10 @@
                 <span class="wish-badge"><i class="fa-solid fa-heart text-xs"></i> رسالة تقدير</span>
                 ${adminActionsHTML}
               </div>
-              <div class="wish-text">"${escapeHtml(wish.text)}"</div>
+              <div class="wish-text">"${escapeHtml(wish.text || '')}"</div>
             </div>
             <div class="wish-footer">
-              <span class="wish-author"><i class="fa-solid fa-user-tag"></i> ${escapeHtml(wish.name)}</span>
+              <span class="wish-author"><i class="fa-solid fa-user-tag"></i> ${escapeHtml(wish.name || '')}</span>
               <button class="wish-like" onclick="toggleLike(${wish.id})">
                 <i class="fa-regular fa-heart"></i>
                 <span>${wish.likes || 0}</span>
@@ -893,10 +903,10 @@
                   </button>
                 </div>
               </div>
-              <div class="wish-text">"${escapeHtml(wish.text)}"</div>
+              <div class="wish-text">"${escapeHtml(wish.text || '')}"</div>
             </div>
             <div class="wish-footer">
-              <span class="wish-author"><i class="fa-solid fa-user-tag"></i> ${escapeHtml(wish.name)}</span>
+              <span class="wish-author"><i class="fa-solid fa-user-tag"></i> ${escapeHtml(wish.name || '')}</span>
             </div>
           `;
           pendingWishesContainer.appendChild(card);
